@@ -125,10 +125,16 @@ h6 {
 .header__nav {
     background-color: var(--dark);
     height: 10vh;
+    top: 90vh;
+}
+
+.fixed{
     width: 100%;
     position: fixed;
     z-index: 99999;
+    top: 0;
 }
+
 .header__nav ul{text-align: right}
 .header__nav a{
     color: white;
@@ -136,6 +142,7 @@ h6 {
     padding: 0 1em;
     box-sizing: border-box;
 }
+
 .header__nav li{display: inline-block }
 .current { color: var(--dark-green) }
 

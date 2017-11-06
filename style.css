@@ -143,6 +143,9 @@ h6 {
     box-sizing: border-box;
 }
 
+.header__nav a:hover,
+.header__nav a:link{ color: var(--dark-green) }
+
 .header__nav li{display: inline-block }
 .current { color: var(--dark-green) }
 

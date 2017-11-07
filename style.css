@@ -139,15 +139,19 @@ h6 {
 .header__nav a{
     color: white;
     line-height: 4em;
-    padding: 0 1em;
+    padding: 0 .6em;
     box-sizing: border-box;
+    -webkit-transition: color .3s ease-in;
+    -moz-transition: color .3s ease-in;
+    transition: color .3s ease-in;
 }
 
 .header__nav a:hover,
-.header__nav a:link{ color: var(--dark-green) }
+.header__nav a:active { color: var(--dark-green) }
 
 .header__nav li{display: inline-block }
-.current { color: var(--dark-green) }
+
+.current { color: var(--dark-green) !important; }
 
 .header__logo{
     font-size: 2em;

@@ -14,19 +14,53 @@ function stikcyNav(){
 
 window.addEventListener('scroll', stikcyNav, false);
 
+function toTop() {
+    let y = window.pageYOffset,
+        sisa = y % 10;
+
+    let interval = setInterval(function () {
+        
+        if (y <= 0) {
+            clearInterval(interval);
+        }else{
+            window.scroll(0, y - 20);
+            
+            y = y - 10;
+
+            if(y == sisa){
+                y = y - sisa;
+            }
+        }
+    }, 6);
+}
+
 function smootScroll(event, dest) {
     var y = event.pageY;
-    // console.log(event);
-    var interval = setInterval(function () {
-        
-        if (y >= dest.offsetTop) {
-            clearInterval(interval);
-            y = event.pageY;
-        }else{
-            y = y + 6;
-            window.scroll(0, y);
-        }
-    }, 5);
+    
+    if(window.pageYOffset < dest.offsetTop){
+        var interval = setInterval(function () {
+
+            if (y >= dest.offsetTop - 50) {
+                clearInterval(interval);
+                y = event.pageY;
+            } else {
+                y = y + 6;
+                window.scroll(0, y);
+            }
+
+        }, 5);
+    }else{
+         var interval = setInterval(function () {
+
+             if (y <= dest.offsetTop - 50) {
+                 clearInterval(interval);
+                 y = event.pageY;
+             } else {
+                 y = y - 6;
+                 window.scroll(0, y);
+             }
+         }, 5);
+    }
 }
 
 
@@ -37,37 +71,37 @@ anchor.addEventListener('click', function(event){
     event.preventDefault();
 
     let dest = document.querySelector("div."+event.target.id);
-    smootScroll(event, dest);
+    if(dest.textContent == "HOME") toTop();
+    else smootScroll(event, dest);
 });
-
-// about.addEventListener('click',function(event) {
-//    console.log(event);
-// });
 
 var totop = document.getElementsByClassName('top')[0];
 
-window.onscroll = function(){
+window.addEventListener("scroll", function(){
     if(window.pageYOffset >= 1000){
         totop.style.display = "block";
     }else{
         totop.style.display = "none";
     }
-    
-};
+});
 
-totop.onclick = function(){
-    let y = window.pageYOffset;
-    let interval = setInterval(function () {
-        window.scroll(0, y);
-        y = y - 10;
-        
-        if(y <= 0){
-            clearInterval(interval);
-        }
-        
-        if (y < 10) {
-            y = 0;
-        }
-        console.log(y);
-    }, 6);
-};
+totop.addEventListener('click', function(event){
+    toTop();
+});
+
+let link = document.querySelectorAll('.header__nav a');
+
+function lostedAllCurrent(link) {
+    for (var i = 0; i < link.length; i++) {
+        link[i].classList.remove('current');
+    }
+}
+
+
+for (var i = 0; i < link.length; i++) {
+    link[i].addEventListener('click', function (event) {
+        lostedAllCurrent(link);
+
+        this.classList.add("current");
+    });
+}

@@ -105,3 +105,67 @@ for (var i = 0; i < link.length; i++) {
         this.classList.add("current");
     });
 }
+
+
+function addClass(element, name){
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    
+    for (let i = 0; i < arr2.length; i++) {
+        if(arr1.indexOf(name) == -1) 
+           element.className += " " + name;
+    }
+}
+
+function removeClass(element, name){
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+
+    while (arr1.indexOf(name) > -1) {
+        arr1.splice(arr1.indexOf(name), 1); 
+    }
+    element.className = arr1.join(" ");
+}
+
+
+function filterSelection(cat){
+    var item = document.querySelectorAll('.porto img');
+    
+    if(cat == "all") cat = "";
+    
+    for (var i = 0; i < item.length; i++) {
+        removeClass(item[i], "show");
+        if (item[i].className.indexOf(cat) > -1) addClass(item[i], "show");
+    }
+}
+
+var porAnchor = document.querySelectorAll('#navigation li');
+var stuff = document.querySelectorAll('.porto img');
+
+porAnchor[0].addEventListener('click', function(event){
+    event.preventDefault();
+    filterSelection('all');
+});
+
+porAnchor[1].addEventListener('click', function(event){
+    event.preventDefault();
+    filterSelection('web-d');
+});
+
+porAnchor[2].addEventListener('click', function(event){
+    event.preventDefault();
+    filterSelection('web-a');
+});
+
+porAnchor[3].addEventListener('click', function(event){
+    event.preventDefault();
+    filterSelection('mob-a');
+});
+
+window.addEventListener('load', function(event){
+    event.preventDefault();
+    filterSelection('all');
+});
+
+

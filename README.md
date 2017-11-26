@@ -6,4 +6,4 @@ you can clone this web to your local repo and learn together.
 
 you can access here
 
-[link](http://alrasyidin.github.io/focal-website)
+[http://alrasyidin.github.io/focal-website](http://alrasyidin.github.io/focal-website)

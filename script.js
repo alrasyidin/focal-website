@@ -121,27 +121,31 @@ function addClass(element, name){
 function removeClass(element, name){
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
-
     while (arr1.indexOf(name) > -1) {
         arr1.splice(arr1.indexOf(name), 1); 
     }
     element.className = arr1.join(" ");
 }
 
+var item = document.querySelectorAll('.porto img');
 
 function filterSelection(cat){
-    var item = document.querySelectorAll('.porto img');
+    var i;
     
     if(cat == "all") cat = "";
     
-    for (var i = 0; i < item.length; i++) {
-        removeClass(item[i], "show");
-        if (item[i].className.indexOf(cat) > -1) addClass(item[i], "show");
+    for (i = 0; i < item.length; i++) {
+        if (item[i].className.indexOf(cat) > -1){
+            removeClass(item[i], "hide");
+            addClass(item[i], "show");
+        }else{
+            removeClass(item[i], "show");
+            addClass(item[i], "hide");
+        }
     }
 }
 
 var porAnchor = document.querySelectorAll('#navigation li');
-var stuff = document.querySelectorAll('.porto img');
 
 porAnchor[0].addEventListener('click', function(event){
     event.preventDefault();
@@ -167,5 +171,3 @@ window.addEventListener('load', function(event){
     event.preventDefault();
     filterSelection('all');
 });
-
-

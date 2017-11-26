@@ -39,7 +39,7 @@ a{text-decoration: none}
 
 html, body{
     font-size: 16px;
-    font-family: myFontRegular;
+    font-family: myFontRegular, sans-serif;
 }
 
 p,blockquote,address { color: #949494 }
@@ -365,14 +365,20 @@ h6 {
  
 /* base javascript */
 .show{
-    display: block !important;
     animation: fadeIn 1.5s ease-in-out both;
-}
-@keyframes fadeIn{
-    from{opacity: 0}
-    to{opacity: 1}
+    display: block !important;
 }
 
-.porto .column{
-    display: block;
+.hide{
+    animation: fadeOut 2s ease-in both;
+    display: none !important;
+}
+
+@keyframes fadeOut{
+    to { opacity: 0; }
+}
+
+@keyframes fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
 }

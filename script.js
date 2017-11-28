@@ -15,20 +15,20 @@ function stikcyNav(){
 window.addEventListener('scroll', stikcyNav, false);
 
 function toTop() {
-    let y = window.pageYOffset,
-        sisa = y % 10;
+    var yPage = window.pageYOffset,
+        sisa = yPage % 10;
 
-    let interval = setInterval(function () {
+    var interval = setInterval(function () {
         
-        if (y <= 0) {
+        if (yPage <= 0) {
             clearInterval(interval);
         }else{
             window.scroll(0, y - 20);
             
-            y = y - 10;
+            yPage = yPage - 10;
 
-            if(y == sisa){
-                y = y - sisa;
+            if(yPage == sisa){
+                yPage = yPage - sisa;
             }
         }
     }, 6);
@@ -70,7 +70,7 @@ var about = document.getElementsByClassName("about")[0];
 anchor.addEventListener('click', function(event){
     event.preventDefault();
 
-    let dest = document.querySelector("div."+event.target.id);
+    var dest = document.querySelector("div."+event.target.id);
     if(dest.textContent == "HOME") toTop();
     else smootScroll(event, dest);
 });
@@ -89,7 +89,7 @@ totop.addEventListener('click', function(event){
     toTop();
 });
 
-let link = document.querySelectorAll('.header__nav a');
+var link = document.querySelectorAll('.header__nav a');
 
 function lostedAllCurrent(link) {
     for (var i = 0; i < link.length; i++) {
@@ -112,7 +112,7 @@ function addClass(element, name){
     arr1 = element.className.split(" ");
     arr2 = name.split(" ");
     
-    for (let i = 0; i < arr2.length; i++) {
+    for (var i = 0; i < arr2.length; i++) {
         if(arr1.indexOf(name) == -1) 
            element.className += " " + name;
     }

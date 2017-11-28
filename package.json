@@ -8,5 +8,22 @@
   },
   "keywords": [],
   "author": "Hamstergeek",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": "git@github.com:alrasyidin/focal-website.git",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-giflossy": "^5.1.10",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "imagemin-zopfli": "^5.1.0"
+  },
+  "dependencies": {
+    "gulp-clean-css": "^3.9.0",
+    "gulp-htmlmin": "^3.0.0",
+    "pump": "^1.0.3"
+  }
 }

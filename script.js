@@ -23,7 +23,7 @@ function toTop() {
         if (yPage <= 0) {
             clearInterval(interval);
         }else{
-            window.scroll(0, y - 20);
+            window.scroll(0, yPage - 20);
             
             yPage = yPage - 10;
 
@@ -170,4 +170,46 @@ porAnchor[3].addEventListener('click', function(event){
 window.addEventListener('load', function(event){
     event.preventDefault();
     filterSelection('all');
+});
+
+function cekEmail(input){
+    var emailPattern = /^\w+@\w+\.\w{2,3}$/;
+
+    if(input.value.match(emailPattern)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+var form = document.forms[0];
+
+form[3].addEventListener('click', function(event){
+    for (var i = 0; i < 3; i++) {
+        if(form[i].value.trim().length <= 0){
+            if(form[i].nextElementSibling.className !== "error"){
+                form[i].style.border = "1px solid red";
+                form[i].insertAdjacentHTML("afterend", `<div class="error">INPUT FIELD ${form[i].name.toUpperCase()} NOT ALLOWED EMPTY</div>`);
+            }
+
+            event.preventDefault();
+        }else{
+            if (form[i].nextElementSibling.className === "error") {
+                form[i].style.border = "none";
+                form[i].nextElementSibling.remove();
+            }
+        }
+    }
+    
+    if(form[1].value.length !== 0){
+        if(!cekEmail(form[1])){
+            form[1].style.border = "1px solid red";
+            form[1].insertAdjacentHTML("afterend", `<div class="error">INPUT FIELD ${form[1].name.toUpperCase()} NOT MATCH. YOU MUST ENTERED CORRECT EMAIL</div>`);
+
+            event.preventDefault();            
+        }else{
+            form[1].style.border = "none";
+            form[1].nextElementSibling.remove();
+        }
+    }
 });
